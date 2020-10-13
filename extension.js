@@ -17,6 +17,15 @@ function activate(context) {
         } else if (word === 'pubf') {
             const ifString = new vscode.SnippetString("public function $1 () \n{\n\t$2\n}");
             replace(ifString, range);
+        } else if (word === 'prif') {
+            const ifString = new vscode.SnippetString("private function $1 () \n{\n\t$2\n}");
+            replace(ifString, range);
+        } else if (word === 'prof') {
+            const ifString = new vscode.SnippetString("protected function $1 () \n{\n\t$2\n}");
+            replace(ifString, range);
+        } else if (word === 're') {
+            const ifString = new vscode.SnippetString("return $1");
+            replace(ifString, range);
         } else if (word === 'tabfor') {
             const ifString = new vscode.SnippetString("\\$table->integer('$1_id')->unsigned();\n\\$table->foreign('$1_id')->references('id')->on('$1s')->onDelete('cascade');");
             replace(ifString, range);

@@ -4,6 +4,9 @@
     "description": "",
     "version": "0.0.1",
     "publisher": "karel",
+    "repository": {
+        "url": "https://github.com/koerel/vscode-php-complete"
+    },
     "engines": {
         "vscode": "^1.17.0"
     },

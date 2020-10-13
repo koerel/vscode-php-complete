@@ -1,65 +1,36 @@
-# php-complete README
+# Info
 
-This is the README for your extension "php-complete". After writing up a brief description, we recommend including the following sections.
+Appends a semicolon or inserts a snippet
 
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+```php
+ if (word === 'if') {
+    const ifString = new vscode.SnippetString(" ($1) {\n\t$2\n}");
+    vscode.window.activeTextEditor.insertSnippet(ifString, pos);
+} else if (word === 'dd') {
+    const ifString = new vscode.SnippetString("($1);");
+    vscode.window.activeTextEditor.insertSnippet(ifString, pos);
+} else if (word === 'fore') {
+    const ifString = new vscode.SnippetString("foreach ($1 as $2) {\n\t$3\n}");
+    replace(ifString, range);
+} else if (word === 'pubf') {
+    const ifString = new vscode.SnippetString("public function $1 () \n{\n\t$2\n}");
+    replace(ifString, range);
+} else if (word === 'prif') {
+    const ifString = new vscode.SnippetString("private function $1 () \n{\n\t$2\n}");
+    replace(ifString, range);
+} else if (word === 'prof') {
+    const ifString = new vscode.SnippetString("protected function $1 () \n{\n\t$2\n}");
+    replace(ifString, range);
+} else if (word === 're') {
+    const ifString = new vscode.SnippetString("return $1");
+    replace(ifString, range);
+} else if (word === 'tabfor') {
+    const ifString = new vscode.SnippetString("\\$table->integer('$1_id')->unsigned();\n\\$table->foreign('$1_id')->references('id')->on('$1s')->onDelete('cascade');");
+    replace(ifString, range);
+} else {
+    const line = vscode.window.activeTextEditor.document.lineAt(pos);
+    const newPos = line.range.end;
+    const ifString = new vscode.SnippetString(";$1");
+    vscode.window.activeTextEditor.insertSnippet(ifString, newPos);
+}
+```
