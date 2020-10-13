@@ -10,6 +10,7 @@
     "engines": {
         "vscode": "^1.17.0"
     },
+    "license": "MIT",
     "categories": [
         "Other"
     ],
