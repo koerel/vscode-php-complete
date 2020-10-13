@@ -24,7 +24,26 @@
                 "command": "extension.phpComplete",
                 "title": "PHP Complete"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "PHP Complete",
+            "properties": {
+                "phpcomplete.completions": {
+                    "type": "object",
+                    "default": {
+                        "dd": "dd();",
+                        "if": " ($1) {\n\t$2\n}",
+                        "fore": "foreach ($1 as $2) {\n\t$3\n}",
+                        "pubf": "public function $1 () \n{\n\t$2\n}",
+                        "prif": "private function $1 () \n{\n\t$2\n}",
+                        "prof": "protected function $1 () \n{\n\t$2\n}",
+                        "re": "return $1",
+                        "tabfor": "\\$table->integer('$1_id')->unsigned();\n\\$table->foreign('$1_id')->references('id')->on('$1s')->onDelete('cascade');"
+                    },
+                    "description": "Mappings for completions"
+                }
+            }
+        }
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
